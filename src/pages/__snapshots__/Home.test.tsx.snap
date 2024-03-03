@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders learn react link testing heading 1`] = `
+<section
+  data-testid="homePage"
+>
+  <h1>
+    Home Page
+  </h1>
+</section>
+`;

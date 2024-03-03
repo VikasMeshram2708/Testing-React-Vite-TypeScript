@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing contact page check the heading 1`] = `
+<section
+  data-testid="contactPage"
+>
+  <h1>
+    Contact Page
+  </h1>
+</section>
+`;

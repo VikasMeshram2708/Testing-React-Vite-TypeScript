@@ -4,7 +4,7 @@ import Home from "./Home";
 describe("renders learn react link", () => {
   it("testing heading", () => {
     render(<Home />);
-    const heading = screen.getByRole("heading");
-    expect(heading).toHaveTextContent("Home Page");
+    const HomePage = screen.getByTestId("homePage");
+    expect(HomePage).toMatchSnapshot();
   });
 });
