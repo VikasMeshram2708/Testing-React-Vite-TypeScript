@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "./store/TodoSlice";
+import { addTodo, deleteTodo } from "./store/TodoSlice";
 import type { RootType } from "./store/store";
 
 const App = () => {
@@ -49,6 +49,7 @@ const App = () => {
           >
             <li>{todo.todo}</li>
             <button
+              onClick={() => dispatch(deleteTodo(todo.id))}
               type="button"
               className="bg-red-500 text-white px-4 py-2 rounded"
             >
