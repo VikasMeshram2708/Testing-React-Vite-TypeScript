@@ -1,17 +1,24 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo } from "./store/TodoSlice";
+import type { RootType } from "./store/store";
 
 const App = () => {
+  const dispatch = useDispatch();
   const [todo, setTodo] = useState<string>("");
-  const [todos, setTodos] = useState<string[]>([]);
+  const todos = useSelector((state: RootType) => state.todo);
 
-  const handleSubmit = (event:FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setTodos([...todos, todo]);
+    if (!todo.trim()) {
+      return alert("Todo cannot be empty.");
+    }
+
+    dispatch(addTodo(todo));
 
     // reset the input filed
-    setTodo("")
-
+    setTodo("");
   };
 
   return (
@@ -36,9 +43,17 @@ const App = () => {
       </form>
       <ul className="mt-10 max-w-md mx-auto text-white">
         {todos?.map((todo) => (
-          <div key={Math.floor(1000 + Math.random() * 9000)} className="border-2 border-purple-500 rounded p-2 flex items-center mb-5 justify-between">
-            <li>{todo}</li>
-            <button type="button" className="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+          <div
+            key={todo.id}
+            className="border-2 border-purple-500 rounded p-2 flex items-center mb-5 justify-between"
+          >
+            <li>{todo.todo}</li>
+            <button
+              type="button"
+              className="bg-red-500 text-white px-4 py-2 rounded"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </ul>
