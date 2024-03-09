@@ -22,7 +22,7 @@ const App = () => {
   };
 
   return (
-    <section className="min-h-screen bg-slate-900">
+    <section data-testid="main-app" className="min-h-screen bg-slate-900">
       <h1 className="pt-10 text-center text-2xl text-white">Hello,World!</h1>
       <form onSubmit={handleSubmit} className="mt-10 flex justify-center">
         <input
